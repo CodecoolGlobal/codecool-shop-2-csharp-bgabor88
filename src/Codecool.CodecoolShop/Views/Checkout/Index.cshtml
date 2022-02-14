@@ -1,0 +1,71 @@
+﻿@using System.Globalization
+ <div class="row">
+  <div class="col-75">
+    <div class="checkoutContainer">
+      <form method="post">
+
+        <div class="row">
+          <div class="col-50">
+            <h3>Billing Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="fullname" placeholder="John M. Doe">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="john@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="10001">
+              </div>
+            </div>            
+          </div>
+
+          <div class="col-50">
+            <h3>Shipping Address</h3>
+            <label for="fnameShipping"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fnameShipping" name="fullnameShipping" placeholder="John M. Doe">
+            <label for="emailShipping"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="emailShipping" name="emailShipping" placeholder="john@example.com">
+            <label for="adrShipping"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adrShipping" name="addressShipping" placeholder="542 W. 15th Street">
+            <label for="cityShipping"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="cityShipping" name="cityShipping" placeholder="New York">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="stateShipping">State</label>
+                <input type="text" id="stateShipping" name="stateShipping" placeholder="NY">
+              </div>
+              <div class="col-50">
+                <label for="zipShipping">Zip</label>
+                <input type="text" id="zipShipping" name="zipShipping" placeholder="10001">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <input type="submit" class="btn btn-success" value="Continue to payment" asp-controller="payment" asp-action="index">
+      </form>
+    </div>
+  </div>
+
+  <div class="col-25">
+    <div class="checkoutContainer">
+      <h4>Total items
+        <span class="price" style="color:black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>@ViewBag.itemQty</b>
+        </span>
+      </h4>
+      <p>Total <span class="price" style="color:black"><b>@ViewBag.total.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))</b></span></p>
+    </div>
+  </div>
+</div> 

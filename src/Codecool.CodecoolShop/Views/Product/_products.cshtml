@@ -1,0 +1,26 @@
+﻿@using System.Globalization
+@model List<Codecool.CodecoolShop.Models.Product>
+
+<div class="container">
+    @foreach (var element in Model)
+    {
+        <div class="col-lg-3 col-lg-3 p-2 d-inline-flex product-container">
+            <div class="card">
+                <a asp-area="" asp-controller="ProductPage" asp-action="Index" asp-route-id=@element.Id>
+                    <img src="~/img/@(element.Name).jpg" class="s-img" alt="Default image">
+                </a>
+
+                <div class="card-body">
+                    <h4 class="title card-title text-center">@element.Name</h4>
+                    <p class="card-text list-description">@element.Description.</p>
+                    <p class="card-text">Category: @element.ProductCategory.Department</p>
+                    <p class="card-text">Supplier: @element.Supplier.Name</p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))</strong></p>
+                        <a type="button" class="btn btn-primary" asp-controller="cart" asp-action="buy" asp-route-id="@element.Id">Add To Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

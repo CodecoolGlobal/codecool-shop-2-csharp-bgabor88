@@ -1,0 +1,47 @@
+﻿@using System.Globalization
+<div class="row">
+  <div class="col-75">
+    <div class="checkoutContainer">
+        <h3>Thank you for your purchase, @(ViewBag.order.FullName)</h3>
+        <br>
+        <h3>Your order is confirmed!</h3>
+        <br>
+        <p>Order ID: @ViewBag.order.Id</p>
+        <p>Consignee: @ViewBag.order.FullNameShipping</p>
+        <p>Email of consignee: @ViewBag.order.EmailShipping</p>
+        <p>Shipping address: @ViewBag.order.AddressShipping</p>
+        <p>The details of your order:</p>
+        <div class="card">
+            <div class="card-body">
+            <table class="table" cellpadding="2" cellspacing="2" border="1">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Photo</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Sub Total</th>
+                </tr>
+                @foreach (var item in ViewBag.order.ItemCollection)
+                {
+                    <tr>                    
+                        <td>@item.Product.Id</td>
+                        <td>@item.Product.Name</td>
+                        <td><img src="~/img/@(item.Product.Name).jpg" width="60" /> </td>
+                        <td>@item.Product.DefaultPrice.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))</td>
+                        <td>@item.Quantity</td>
+                        <td>@((item.Product.DefaultPrice * item.Quantity).ToString("C2", CultureInfo.CreateSpecificCulture("de-DE")))</td>
+                    </tr>
+                }
+                <tr>
+                    <td align="right" colspan="5">Sum</td>
+                    <td>
+                        @ViewBag.order.Total.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))
+                    </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+  </div>
+</div>

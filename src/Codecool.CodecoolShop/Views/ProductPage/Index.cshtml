@@ -1,0 +1,19 @@
+﻿@using System.Globalization
+@model Product
+
+<div class="container align-content-lg-center p-0 m-0">
+    <div class="d-inline-flex p-3 m-3">
+        <img src="~/img/@(Model.Name).jpg" class="product-img" alt="Default image">
+        <div class="d-flex flex-column p-3 m-3 justify-content-between description">
+            <div>
+                <p class="text-muted pb-0 mb-0" title="@Model.Supplier.Description">@Model.Supplier.Name / @Model.ProductCategory.Name</p>
+                <h2>@Model.Name</h2>
+            </div>
+            <p class="card-text list-description">@Model.Description.</p>
+            <div class="d-flex flex-row justify-content-around align-bottom">
+                <p class="card-text text-center"><strong>Price: @Model.DefaultPrice.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))</strong></p>
+                <a type="button" class="btn btn-primary" asp-controller="cart" asp-action="buy" asp-route-id="@Model.Id">Add To Cart</a>
+            </div>
+        </div>
+    </div>
+</div>

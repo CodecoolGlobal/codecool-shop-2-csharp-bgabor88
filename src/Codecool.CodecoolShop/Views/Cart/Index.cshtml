@@ -1,0 +1,43 @@
+﻿@using System.Globalization
+<h3>Shopping Cart</h3>
+<br>
+<table class="table" cellpadding="2" cellspacing="2" border="1">
+    <tr>
+        <th>Option</th>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Photo</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Sub Total</th>
+    </tr>
+    @foreach (var item in ViewBag.cart)
+    {
+        <tr>
+            <td>
+                <a type="button" class="btn btn-success btn-sm" asp-controller="cart" asp-action="buy" asp-route-id="@item.Product.Id">Increase Qty</a>
+                <a type="button" class="btn btn-danger btn-sm" asp-controller="cart" asp-action="remove" asp-route-id="@item.Product.Id">Remove Qty</a>
+            </td>
+            <td>@item.Product.Id</td>
+            <td>@item.Product.Name</td>
+            <td><img src="~/img/@(item.Product.Name).jpg" width="60" /> </td>
+            <td>@item.Product.DefaultPrice.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))</td>
+            <td>@item.Quantity</td>
+            <td>@((item.Product.DefaultPrice * item.Quantity).ToString("C2", CultureInfo.CreateSpecificCulture("de-DE")))</td>
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="6">Sum</td>
+        <td>
+            @ViewBag.total.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))
+        </td>
+    </tr>
+</table>
+<br>
+<a type="button" class="btn btn-primary" asp-controller="product" asp-action="index">Continue Shopping</a>
+<br>
+@if (ViewBag.cart != null && ViewBag.itemQty > 0)
+{
+    <p>If you had finished adding items, click checkout below.</p>
+    <a type="button" class="btn btn-success" asp-controller="checkout" asp-action="index">Checkout</a>    
+}

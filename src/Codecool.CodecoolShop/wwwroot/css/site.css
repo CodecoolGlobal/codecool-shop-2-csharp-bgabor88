@@ -69,3 +69,129 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+.row {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
+}
+
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+}
+
+.col-33 {
+    -ms-flex: 33%; /* IE10 */
+    flex: 33%;
+}
+
+.col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+}
+
+.col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+}
+
+.col-100 {
+    -ms-flex: 100%; /* IE10 */
+    flex: 100%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+    padding: 0 16px;
+}
+
+.checkoutContainer {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+}
+
+input[type=text] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+label {
+    margin-bottom: 10px;
+    display: block;
+}
+
+.icon-container {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+span.price {
+    float: right;
+    color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+
+    .col-25 {
+        margin-bottom: 20px;
+    }
+}
+
+.title {
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+    overflow: hidden
+}
+
+.s-img {
+    max-width: 90%;
+    align-self: center;
+    padding-top: 10px;
+}
+
+.list-description {
+    height: 75px;
+    overflow: hidden;
+}
+
+.product-container {
+    max-width: 350px;
+}
+
+.product-img {
+    padding: 0;
+    margin: 0;
+    max-width: 50%;
+}
+
+.description {
+    margin-left: 10px;
+}
+
+.logo {
+    max-height: 45px;
+}
+
+.nav-link:hover {
+    font-weight: bolder;
+}
+
+.btn-primary:hover {
+    background-color: palegreen;
+    outline-color: black;
+    color: black;
+}

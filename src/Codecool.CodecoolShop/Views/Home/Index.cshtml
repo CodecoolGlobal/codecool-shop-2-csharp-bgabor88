@@ -1,0 +1,24 @@
+﻿@using System.Globalization
+@model IEnumerable<IEnumerable<Product>>
+
+<div class="container">
+    <p>Featured products:</p>
+    @foreach (var brand in Model)
+    {
+        <div class="row">
+        @foreach (var element in brand)
+        {
+            <div class="p-2 m-2 card d-flex flex-column justify-content-between" style="width: 30%">
+                <h4 class="title card-title text-center">@element.Name</h4>
+                <a asp-area="" asp-controller="ProductPage" asp-action="Index" asp-route-id=@element.Id>
+                    <img class="s-img" id=@element.Id src="~/img/@(element.Name).jpg" alt="Default image" title=@element.Description>
+                </a>
+                <div class="d-flex flex-row justify-content-between">
+                    <p class="card-text text-center"><strong>Price: @element.DefaultPrice.ToString("C2", CultureInfo.CreateSpecificCulture("de-DE"))</strong></p>
+                    <a type="button" class="btn btn-primary" asp-controller="cart" asp-action="buy" asp-route-id="@element.Id">Add To Cart</a>
+                </div>
+            </div>
+        }
+        </div>
+    }
+</div>
