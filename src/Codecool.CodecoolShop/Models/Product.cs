@@ -7,7 +7,7 @@ namespace Codecool.CodecoolShop.Models
     {
         public string Currency { get; set; }
 
-        [Column(TypeName = "decimal(18,29)")]
+        [Column(TypeName = "decimal(20,2)")]
         public decimal DefaultPrice { get; set; }
         public ProductCategory ProductCategory { get; set; }
         public Supplier Supplier { get; set; }

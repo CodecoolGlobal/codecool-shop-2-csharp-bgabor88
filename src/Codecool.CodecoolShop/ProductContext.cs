@@ -15,7 +15,7 @@ namespace Codecool.CodecoolShop
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Product>()
                 .Property(p => p.DefaultPrice)
-                .HasColumnType("decimal(18,29)");
+                .HasColumnType("decimal(20,2)");
         }
     }
 }
