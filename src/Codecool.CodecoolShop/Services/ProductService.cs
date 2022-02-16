@@ -8,33 +8,33 @@ namespace Codecool.CodecoolShop.Services
 {
     public class ProductService
     {
-        private readonly IProductDao productDao;
-        private readonly IProductCategoryDao productCategoryDao;
-        private readonly ISupplierDao supplierDao;
+        private readonly IProductDao _productDao;
+        private readonly IProductCategoryDao _productCategoryDao;
+        private readonly ISupplierDao _supplierDao;
 
         public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ISupplierDao supplierDao)
         {
-            this.productDao = productDao;
-            this.productCategoryDao = productCategoryDao;
-            this.supplierDao = supplierDao;
+            this._productDao = productDao;
+            this._productCategoryDao = productCategoryDao;
+            this._supplierDao = supplierDao;
         }
 
         public ProductService()
         {
-            this.productDao = ProductDaoMemory.GetInstance();
-            this.productCategoryDao = ProductCategoryDaoMemory.GetInstance();
-            this.supplierDao = SupplierDaoMemory.GetInstance();
+            this._productDao = ProductDaoMemory.GetInstance();
+            this._productCategoryDao = ProductCategoryDaoMemory.GetInstance();
+            this._supplierDao = SupplierDaoMemory.GetInstance();
         }
 
         public ProductCategory GetProductCategory(int categoryId)
         {
-            return this.productCategoryDao.Get(categoryId);
+            return this._productCategoryDao.Get(categoryId);
         }
 
         public IEnumerable<Product> GetProductsForCategory(int categoryId)
         {
-            ProductCategory category = this.productCategoryDao.Get(categoryId);
-            return this.productDao.GetBy(category);
+            ProductCategory category = this._productCategoryDao.Get(categoryId);
+            return this._productDao.GetBy(category);
         }
         public IEnumerable<Product> GetFilteredProducts(string supplierName, string categoryName)
         {
@@ -43,30 +43,30 @@ namespace Codecool.CodecoolShop.Services
 
             if (supplierName == "All" && categoryName != "All")
             {
-                category = this.productCategoryDao.Get(categoryName);
-                return this.productDao.GetBy(category);
+                category = this._productCategoryDao.Get(categoryName);
+                return this._productDao.GetBy(category);
             }
 
             if (supplierName != "All" && categoryName == "All")
             {
-                supplier = supplierDao.GetAll().FirstOrDefault(x => x.Name == supplierName);
-                return this.productDao.GetBy(supplier);
+                supplier = _supplierDao.GetAll().FirstOrDefault(x => x.Name == supplierName);
+                return this._productDao.GetBy(supplier);
             }
 
-            category = this.productCategoryDao.Get(categoryName);
-            supplier = supplierDao.GetAll().FirstOrDefault(x => x.Name == supplierName);
+            category = this._productCategoryDao.Get(categoryName);
+            supplier = _supplierDao.GetAll().FirstOrDefault(x => x.Name == supplierName);
 
-            return this.productDao.GetBy(category, supplier);
+            return this._productDao.GetBy(category, supplier);
         }
 
         public IEnumerable<Product> GetAll()
         {
-            return this.productDao.GetAll();
+            return this._productDao.GetAll();
         }
 
         public Product GetProductById(int id)
         {
-            return this.productDao.Get(id);
+            return this._productDao.Get(id);
         }
     }
 }
