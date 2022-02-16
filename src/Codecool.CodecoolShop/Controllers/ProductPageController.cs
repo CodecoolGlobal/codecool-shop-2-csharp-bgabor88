@@ -1,6 +1,4 @@
-﻿using Codecool.CodecoolShop.Daos;
-using Codecool.CodecoolShop.Daos.Implementations;
-using Codecool.CodecoolShop.Helpers;
+﻿using Codecool.CodecoolShop.Helpers;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
 
