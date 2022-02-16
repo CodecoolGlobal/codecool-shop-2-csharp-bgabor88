@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Codecool.CodecoolShop.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using Codecool.CodecoolShop.Helpers;
-using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Daos;
+using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Helpers;
+using Codecool.CodecoolShop.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -15,7 +15,7 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("index")]
         public IActionResult Index(IFormCollection collection)
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
 
             IOrderDao orderDataStore = OrderDaoMemory.GetInstance();
 
