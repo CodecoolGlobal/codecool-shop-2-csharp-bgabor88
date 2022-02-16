@@ -7,12 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Codecool.CodecoolShop.Helpers;
 using Codecool.CodecoolShop.Daos.Implementations;
+using Codecool.CodecoolShop.Services;
 
 namespace Codecool.CodecoolShop.Controllers
 {
     [Route("cart")]
     public class CartController : Controller
     {
+        private readonly ProductService _productService;
+
+        public CartController(ProductService service)
+        {
+            _productService = service;
+        }
+
         [Route("index")]
         public IActionResult Index()
         {
@@ -29,7 +37,7 @@ namespace Codecool.CodecoolShop.Controllers
             if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
             {
                 List<Item> cart = new List<Item>();
-                cart.Add(new Item { Product = ProductDaoMemory.GetInstance().Get(id), Quantity = 1 });
+                cart.Add(new Item { Product = _productService.GetProductById(id), Quantity = 1 });
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
             else
@@ -42,7 +50,7 @@ namespace Codecool.CodecoolShop.Controllers
                 }
                 else
                 {
-                    cart.Add(new Item { Product = ProductDaoMemory.GetInstance().Get(id), Quantity = 1 });
+                    cart.Add(new Item { Product = _productService.GetProductById(id), Quantity = 1 });
                 }
                 SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
             }
