@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Codecool.CodecoolShop.Helpers;
 using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
-using Codecool.CodecoolShop.Helpers;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -12,7 +12,7 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             ViewBag.cart = cart;
             ViewBag.itemQty = cart.Sum(item => item.Quantity);
             ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
