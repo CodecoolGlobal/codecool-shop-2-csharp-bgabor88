@@ -64,5 +64,10 @@ namespace Codecool.CodecoolShop.Services
         {
             return this.productDao.GetAll();
         }
+
+        public Product GetProductById(int id)
+        {
+            return this.productDao.Get(id);
+        }
     }
 }
