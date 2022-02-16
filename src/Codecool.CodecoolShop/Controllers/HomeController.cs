@@ -12,12 +12,15 @@ namespace Codecool.CodecoolShop.Controllers
     public class HomeController : Controller
     {
         private ProductService _productService;
+        //private ProductContext _context;
 
-        public HomeController()
+        public HomeController(ProductService service)
         {
-            _productService = new ProductService(
-                ProductDaoMemory.GetInstance(),
-                ProductCategoryDaoMemory.GetInstance());
+            _productService = service;
+            //_context = context;
+            //_productService = new ProductService(
+            //    ProductDaoMemory.GetInstance(),
+            //    ProductCategoryDaoMemory.GetInstance());
         }
 
         public IActionResult Index()
@@ -26,6 +29,9 @@ namespace Codecool.CodecoolShop.Controllers
 
             var featuredProducts = new List<IEnumerable<Product>>
             {
+                //_context.Product.Where(p => p.Supplier.Name == "Sony").OrderByDescending(x => x.DefaultPrice).Take(3).ToList(),
+                //_context.Product.Where(p => p.Supplier.Name == "Nikon").OrderByDescending(x => x.DefaultPrice).Take(3).ToList(),
+                //_context.Product.Where(p => p.Supplier.Name == "Canon").OrderByDescending(x => x.DefaultPrice).Take(3).ToList(),
                 _productService.GetFilteredProducts("Sony", "All").OrderByDescending(x => x.DefaultPrice).Take(3),
                 _productService.GetFilteredProducts("Nikon", "All").OrderByDescending(x => x.DefaultPrice).Take(3),
                 _productService.GetFilteredProducts("Canon", "All").OrderByDescending(x => x.DefaultPrice).Take(3)

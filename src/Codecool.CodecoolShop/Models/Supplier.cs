@@ -5,8 +5,7 @@ namespace Codecool.CodecoolShop.Models
 {
     public class Supplier : BaseModel
     {
-        [NotMapped]
-        public IEnumerable<Product> Products { get; set; }
+        public virtual IEnumerable<Product> Products { get; set; }
         
         public override string ToString()
         {

@@ -10,6 +10,7 @@
         {
             <div class="p-2 m-2 card d-flex flex-column justify-content-between" style="width: 30%">
                 <h4 class="title card-title text-center">@element.Name</h4>
+                <h4 class="title card-title text-center">TEST: @element.Supplier.Name</h4>
                 <a asp-area="" asp-controller="ProductPage" asp-action="Index" asp-route-id=@element.Id>
                     <img class="s-img" id=@element.Id src="~/img/@(element.Name).jpg" alt="Default image" title=@element.Description>
                 </a>
