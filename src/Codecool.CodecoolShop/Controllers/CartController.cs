@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Codecool.CodecoolShop.Models;
-using Microsoft.AspNetCore.Mvc;
 using Codecool.CodecoolShop.Helpers;
+using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Codecool.CodecoolShop.Controllers
 {
@@ -20,7 +20,7 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("index")]
         public IActionResult Index()
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");          
+            var cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");          
             ViewBag.cart = cart;
             ViewBag.itemQty = cart.Sum(item => item.Quantity);
             ViewBag.total = cart.Sum(item => item.Product.DefaultPrice * item.Quantity);
@@ -30,15 +30,17 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("buy/{id}")]
         public IActionResult Buy(int id)
         {
-            if (SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart") == null)
+            if (HttpContext.Session.GetObjectFromJson<List<Item>>("cart") == null)
             {
-                List<Item> cart = new List<Item>();
-                cart.Add(new Item { Product = _productService.GetProductById(id), Quantity = 1 });
-                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                List<Item> cart = new List<Item>
+                {
+                    new Item { Product = _productService.GetProductById(id), Quantity = 1 }
+                };
+                HttpContext.Session.SetObjectAsJson("cart", cart);
             }
             else
             {
-                List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+                List<Item> cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
                 int index = IsExist(id);
                 if (index != -1)
                 {
@@ -48,7 +50,7 @@ namespace Codecool.CodecoolShop.Controllers
                 {
                     cart.Add(new Item { Product = _productService.GetProductById(id), Quantity = 1 });
                 }
-                SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+                HttpContext.Session.SetObjectAsJson("cart", cart);
             }
             return RedirectToAction("Index");
         }
@@ -56,7 +58,7 @@ namespace Codecool.CodecoolShop.Controllers
         [Route("remove/{id}")]
         public IActionResult Remove(int id)
         {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            List<Item> cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             int index = IsExist(id);
             if (cart[index].Quantity > 1)
             {
@@ -66,13 +68,13 @@ namespace Codecool.CodecoolShop.Controllers
             {
                 cart.RemoveAt(index);
             }
-            SessionHelper.SetObjectAsJson(HttpContext.Session, "cart", cart);
+            HttpContext.Session.SetObjectAsJson("cart", cart);
             return RedirectToAction("Index");
         }
 
         private int IsExist(int id)
         {
-            List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
+            List<Item> cart = HttpContext.Session.GetObjectFromJson<List<Item>>("cart");
             for (int i = 0; i < cart.Count; i++)
             {
                 if (cart[i].Product.Id.Equals(id))
