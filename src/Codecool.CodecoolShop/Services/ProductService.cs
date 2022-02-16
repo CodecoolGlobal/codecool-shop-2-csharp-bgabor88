@@ -11,11 +11,13 @@ namespace Codecool.CodecoolShop.Services
     {
         private readonly IProductDao productDao;
         private readonly IProductCategoryDao productCategoryDao;
+        private readonly ISupplierDao supplierDao;
 
-        public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao)
+        public ProductService(IProductDao productDao, IProductCategoryDao productCategoryDao, ISupplierDao supplierDao)
         {
             this.productDao = productDao;
             this.productCategoryDao = productCategoryDao;
+            this.supplierDao = supplierDao;
         }
 
         public ProductCategory GetProductCategory(int categoryId)
@@ -41,12 +43,12 @@ namespace Codecool.CodecoolShop.Services
 
             if (supplierName != "All" && categoryName == "All")
             {
-                supplier = SupplierDaoMemory.GetInstance().GetAll().FirstOrDefault(x => x.Name == supplierName);
+                supplier = supplierDao.GetAll().FirstOrDefault(x => x.Name == supplierName);
                 return this.productDao.GetBy(supplier);
             }
 
             category = this.productCategoryDao.Get(categoryName);
-            supplier = SupplierDaoMemory.GetInstance().GetAll().FirstOrDefault(x => x.Name == supplierName);
+            supplier = supplierDao.GetAll().FirstOrDefault(x => x.Name == supplierName);
 
             return this.productDao.GetBy(category, supplier);
         }

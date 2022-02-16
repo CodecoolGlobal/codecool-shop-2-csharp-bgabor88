@@ -1,4 +1,5 @@
-﻿using Codecool.CodecoolShop.Daos.Implementations;
+﻿using Codecool.CodecoolShop.Daos;
+using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Helpers;
 using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -7,10 +8,10 @@ namespace Codecool.CodecoolShop.Controllers
 {
     public class ProductPageController : Controller
     {
-        private readonly ProductDaoMemory _products;
-        public ProductPageController()
+        private readonly IProductDao _products;
+        public ProductPageController(IProductDao productDao)
         {
-            _products = ProductDaoMemory.GetInstance();
+            _products = productDao;
         }
 
         [Route("Product/{id:int}")]

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Daos.Implementations;
 using Codecool.CodecoolShop.Models;
+using Codecool.CodecoolShop.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +34,10 @@ namespace Codecool.CodecoolShop
                     .UseLazyLoadingProxies()
                     .UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+            services.AddScoped<ISupplierDao, SupplierDaoDb>();
+            services.AddScoped<IProductCategoryDao, ProductCategoryDaoDb>();
+            services.AddScoped<IProductDao, ProductDaoDb>();
+            services.AddScoped<ProductService>();
             services.AddControllersWithViews();
             services.AddMvc();
             services.AddSession();
@@ -66,7 +71,7 @@ namespace Codecool.CodecoolShop
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            SetupInMemoryDatabases();
+            //SetupInMemoryDatabases();
         }
 
         private void SetupInMemoryDatabases()
