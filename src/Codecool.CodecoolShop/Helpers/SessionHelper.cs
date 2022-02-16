@@ -1,10 +1,11 @@
-﻿using Codecool.CodecoolShop.Models;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using Codecool.CodecoolShop.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace Codecool.CodecoolShop.Helpers
 {
@@ -23,7 +24,7 @@ namespace Codecool.CodecoolShop.Helpers
 
         public static void SetCartSession(dynamic ViewBag, ISession session)
         {
-            var cart = SessionHelper.GetObjectFromJson<List<Item>>(session, "cart");
+            var cart = session.GetObjectFromJson<List<Item>>("cart");
             if (cart != null)
             {
                 ViewBag.cart = cart;
@@ -33,10 +34,9 @@ namespace Codecool.CodecoolShop.Helpers
 
         public static void SaveToJsonFile(Order value, int orderNumber)
         {
-            //string jsonString = JsonConvert.SerializeObject(value);
             var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = System.Text.Json.JsonSerializer.Serialize(value, options);
-            jsonString += System.Text.Json.JsonSerializer.Serialize(value.ItemCollection, options);
+            string jsonString = JsonSerializer.Serialize(value, options);
+            jsonString += JsonSerializer.Serialize(value.ItemCollection, options);
             File.WriteAllText($"../savedOrder{orderNumber}.json", jsonString);            
         }
     }
