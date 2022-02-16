@@ -4,56 +4,39 @@ using Codecool.CodecoolShop.Models;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {
-    class ProductCategoryDaoDb : IProductCategoryDao
+    public class ProductCategoryDaoDb : IProductCategoryDao
     {
-        private List<ProductCategory> data;
-        //private static ProductCategoryDaoDb instance;
+        private List<ProductCategory> _data;
 
         public ProductCategoryDaoDb(ProductContext context)
         {
-            //instance = this;
-            data = context.Category.ToList();
+            _data = context.Category.ToList();
         }
-
-        //public static ProductCategoryDaoDb GetInstance()
-        //{
-        //    //if (instance == null)
-        //    //{
-        //    //    instance = new ProductCategoryDaoDb();
-        //    //}
-
-        //    return instance;
-        //}
 
         public void Add(ProductCategory item)
         {
-            item.Id = data.Count + 1;
-            data.Add(item);
+            item.Id = _data.Count + 1;
+            _data.Add(item);
         }
 
         public void Remove(int id)
         {
-            data.Remove(this.Get(id));
+            _data.Remove(this.Get(id));
         }
 
         public ProductCategory Get(int id)
         {
-            return data.Find(x => x.Id == id);
+            return _data.Find(x => x.Id == id);
         }
-
-        //public ProductCategory Get(string category)
-        //{
-        //    return data.Find(x => x.Name == category);
-        //}
 
         public IEnumerable<ProductCategory> GetAll()
         {
-            return data;
+            return _data;
         }
 
         public ProductCategory Get(string categoryName)
         {
-            return data.Find(x => x.Name == categoryName);
+            return _data.Find(x => x.Name == categoryName);
         }
     }
 }
