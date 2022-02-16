@@ -29,7 +29,9 @@ namespace Codecool.CodecoolShop
         {
             services.AddDbContext<ProductContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("Default"));
+                options
+                    .UseLazyLoadingProxies()
+                    .UseSqlServer(Configuration.GetConnectionString("Default"));
             });
             services.AddControllersWithViews();
             services.AddMvc();

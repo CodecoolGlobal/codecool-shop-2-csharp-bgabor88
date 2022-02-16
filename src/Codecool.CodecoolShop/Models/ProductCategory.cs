@@ -6,8 +6,7 @@ namespace Codecool.CodecoolShop.Models
 {
     public class ProductCategory: BaseModel
     {
-        [NotMapped]
-        public List<Product> Products { get; set; }
+        public virtual List<Product> Products { get; set; }
         public string Department { get; set; }
     }
 }
