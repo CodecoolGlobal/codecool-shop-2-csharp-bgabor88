@@ -1,71 +1,57 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Codecool.CodecoolShop.Models;
 
 namespace Codecool.CodecoolShop.Daos.Implementations
 {
     public class ProductDaoDb : IProductDao
     {
-        private List<Product> data;
-        //private static ProductDaoDb instance;
+        private List<Product> _data;
 
         public ProductDaoDb(ProductContext context)
         {
-            //instance = this;
-            data = context.Product.ToList();
+            _data = context.Product.ToList();
         }
-
-        //public static ProductDaoDb GetInstance()
-        //{
-        //    //if (instance == null)
-        //    //{
-        //    //    instance = new ProductDaoDb();
-        //    //}
-
-        //    return instance;
-        //}
 
         public void Add(Product item)
         {
-            item.Id = data.Count + 1;
-            data.Add(item);
+            item.Id = _data.Count + 1;
+            _data.Add(item);
         }
 
         public void Remove(int id)
         {
-            data.Remove(this.Get(id));
+            _data.Remove(this.Get(id));
         }
 
         public Product Get(int id)
         {
-            return data.Find(x => x.Id == id);
+            return _data.Find(x => x.Id == id);
         }
 
         public IEnumerable<Product> GetAll()
         {
-            return data;
+            return _data;
         }
 
         public IEnumerable<Product> GetBy(Supplier supplier)
         {
-            return data.Where(x => x.Supplier.Id == supplier.Id);
+            return _data.Where(x => x.Supplier.Id == supplier.Id);
         }
 
         public IEnumerable<Product> GetBy(ProductCategory productCategory)
         {
-            return data.Where(x => x.ProductCategory.Id == productCategory.Id);
+            return _data.Where(x => x.ProductCategory.Id == productCategory.Id);
         }
 
         public IEnumerable<Product> GetBy(string supplier)
         {
-            return data.Where(x => x.Supplier.Name == supplier);
+            return _data.Where(x => x.Supplier.Name == supplier);
         }
 
         public IEnumerable<Product> GetBy(ProductCategory productCategory, Supplier supplier)
         {
-            return data.Where(x => x.Supplier == supplier && x.ProductCategory == productCategory);
+            return _data.Where(x => x.Supplier == supplier && x.ProductCategory == productCategory);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Codecool.CodecoolShop.Models;
+﻿using Codecool.CodecoolShop.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Codecool.CodecoolShop.Helpers;

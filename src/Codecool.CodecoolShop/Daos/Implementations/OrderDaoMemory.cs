@@ -5,42 +5,44 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 {
     public class OrderDaoMemory : IOrderDao
     {
-        private List<Order> data = new List<Order>();
-        private static OrderDaoMemory instance = null;
+        private List<Order> _data;
+        private static OrderDaoMemory _instance;
 
         private OrderDaoMemory()
         {
+            _data = new List<Order>();
+            _instance = this;
         }
 
         public static OrderDaoMemory GetInstance()
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = new OrderDaoMemory();
+                _instance = new OrderDaoMemory();
             }
 
-            return instance;
+            return _instance;
         }
 
         public void Add(Order item)
         {
-            item.Id = data.Count + 1;
-            data.Add(item);
+            item.Id = _data.Count + 1;
+            _data.Add(item);
         }
 
         public void Remove(int id)
         {
-            data.Remove(this.Get(id));
+            _data.Remove(this.Get(id));
         }
 
         public Order Get(int id)
         {
-            return data.Find(x => x.Id == id);
+            return _data.Find(x => x.Id == id);
         }
 
         public IEnumerable<Order> GetAll()
         {
-            return data;
+            return _data;
         }
     }
 }

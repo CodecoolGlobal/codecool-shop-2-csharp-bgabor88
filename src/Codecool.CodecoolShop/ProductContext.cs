@@ -10,12 +10,6 @@ namespace Codecool.CodecoolShop
         public DbSet<ProductCategory> Category { get; set; }
         public DbSet<Supplier> Supplier { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.EnableSensitiveDataLogging();
-        //    optionsBuilder.UseLazyLoadingProxies();
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -1,13 +1,13 @@
 {
   "Id": 1,
   "PaymentInfo": {
-    "NameOnCard": "hgdfh",
-    "CardNumber": "23423",
-    "ExpMonth": "dsgs",
-    "ExpYear": "dsf",
-    "CVV": "sdfds"
+    "NameOnCard": "gjgjkgj",
+    "CardNumber": "kjgkghk",
+    "ExpMonth": "hkghk",
+    "ExpYear": "hkgh",
+    "CVV": "khgk"
   },
-  "Total": 7638.0,
+  "Total": 2699.0,
   "FullName": "Bal\u00E1zs G\u00E1bor",
   "Email": "coindealerpro@gmail.com",
   "Address": "Hal\u00E1sz Jen\u0151 Utca",
@@ -24,46 +24,23 @@
   {
     "Product": {
       "Currency": "EUR",
-      "DefaultPrice": 5749.0,
+      "DefaultPrice": 2699.0,
+      "ProductCategoryId": 0,
       "ProductCategory": {
-        "Products": null,
-        "Department": "Camera Body",
-        "Id": 2,
-        "Name": "Body",
-        "Description": "Top of the line Mirrorless digital camera bodies."
-      },
-      "Supplier": {
-        "Products": null,
-        "Id": 3,
-        "Name": "Sony",
-        "Description": "Sony Group Corporation (\u30BD\u30CB\u30FC\u30B0\u30EB\u30FC\u30D7\u682A\u5F0F\u4F1A\u793E), commonly known as Sony and stylized as SONY, is a Japanese multinational conglomerate corporation headquartered in K\u014Dnan, Minato, Tokyo, Japan."
-      },
-      "Id": 16,
-      "Name": "Sony \u03B1 a1",
-      "Description": "The Alpha 1 Mirrorless Digital Camera is a phenomenal all-in-one flagship full frame camera from Sony offers exceptionally high resolution still images and amazing 8K videos in a sophisticated designed compact body."
-    },
-    "Quantity": 1
-  },
-  {
-    "Product": {
-      "Currency": "EUR",
-      "DefaultPrice": 1889.0,
-      "ProductCategory": {
-        "Products": null,
         "Department": "Camera Lens",
         "Id": 1,
         "Name": "Lens",
         "Description": "Quality lenses from the top Camera manufacturers."
       },
+      "SupplierId": 0,
       "Supplier": {
-        "Products": null,
-        "Id": 2,
-        "Name": "Nikon",
-        "Description": "Nikon Corporation (\u682A\u5F0F\u4F1A\u793E\u30CB\u30B3\u30F3), also known just as Nikon, is a Japanese multinational corporation headquartered in Tokyo, Japan, specializing in optics and imaging products. The companies held by Nikon form the Nikon Group."
+        "Id": 3,
+        "Name": "Sony",
+        "Description": "Sony Group Corporation (\u30BD\u30CB\u30FC\u30B0\u30EB\u30FC\u30D7\u682A\u5F0F\u4F1A\u793E), commonly known as Sony and stylized as SONY, is a Japanese multinational conglomerate corporation headquartered in K\u014Dnan, Minato, Tokyo, Japan."
       },
-      "Id": 8,
-      "Name": "Nikon NIKKOR Z 24-70mm f2.8 S",
-      "Description": "Bright and versatile, the NIKKOR Z 24-70mm f/2.8 S from Nikon is a workhorse standard zoom, covering wide-angle to portrait-length fields of view."
+      "Id": 14,
+      "Name": "Sony FE 70-200mm f2.8 GM OSS II",
+      "Description": "The FE 70-200mm f/2.8 GM OSS II Lens is the latest large-aperture telephoto zoom G Master Lens from Sony upgraded from the previous model. With an advanced optical design, the unit affords phenomenal high resolution, along with smooth background defocus effects."
     },
     "Quantity": 1
   }

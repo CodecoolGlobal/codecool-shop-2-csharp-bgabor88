@@ -6,44 +6,32 @@ namespace Codecool.CodecoolShop.Daos.Implementations
 {
     public class SupplierDaoDb : ISupplierDao
     {
-        private List<Supplier> data;
-        //private static SupplierDaoDb instance = null;
+        private List<Supplier> _data;
 
         public SupplierDaoDb(ProductContext context)
         {
-            //instance = this;
-            data = context.Supplier.ToList();
+            _data = context.Supplier.ToList();
         }
-
-        //public static SupplierDaoDb GetInstance()
-        //{
-        //    if (instance == null)
-        //    {
-        //        instance = new SupplierDaoDb();
-        //    }
-
-        //    return instance;
-        //}
 
         public void Add(Supplier item)
         {
-            item.Id = data.Count + 1;
-            data.Add(item);
+            item.Id = _data.Count + 1;
+            _data.Add(item);
         }
 
         public void Remove(int id)
         {
-            data.Remove(this.Get(id));
+            _data.Remove(this.Get(id));
         }
 
         public Supplier Get(int id)
         {
-            return data.Find(x => x.Id == id);
+            return _data.Find(x => x.Id == id);
         }
 
         public IEnumerable<Supplier> GetAll()
         {
-            return data;
+            return _data;
         }
     }
 }

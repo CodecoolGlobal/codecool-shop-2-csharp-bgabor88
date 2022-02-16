@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Codecool.CodecoolShop.Models
@@ -14,11 +13,5 @@ namespace Codecool.CodecoolShop.Models
         
         public int SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
-
-        public void SetProductCategory(ProductCategory productCategory)
-        {
-            ProductCategory = productCategory;
-            ProductCategory.Products.Add(this);
-        }
     }
 }
