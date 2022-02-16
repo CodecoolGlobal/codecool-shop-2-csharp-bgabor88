@@ -39,7 +39,7 @@ namespace Codecool.CodecoolShop.Controllers
             else
             {
                 List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-                int index = isExist(id);
+                int index = IsExist(id);
                 if (index != -1)
                 {
                     cart[index].Quantity++;
@@ -57,7 +57,7 @@ namespace Codecool.CodecoolShop.Controllers
         public IActionResult Remove(int id)
         {
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
-            int index = isExist(id);
+            int index = IsExist(id);
             if (cart[index].Quantity > 1)
             {
                 cart[index].Quantity--;
@@ -70,7 +70,7 @@ namespace Codecool.CodecoolShop.Controllers
             return RedirectToAction("Index");
         }
 
-        private int isExist(int id)
+        private int IsExist(int id)
         {
             List<Item> cart = SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");
             for (int i = 0; i < cart.Count; i++)
