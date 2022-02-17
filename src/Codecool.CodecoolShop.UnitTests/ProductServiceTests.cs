@@ -92,10 +92,17 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            _categoryDao.Get(1).ReturnsNull();
+
             //Act
 
             //Assert
-            Assert.Pass();
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _productService.GetProductsForCategory(1);
+            });
+
         }
 
         [Test]
