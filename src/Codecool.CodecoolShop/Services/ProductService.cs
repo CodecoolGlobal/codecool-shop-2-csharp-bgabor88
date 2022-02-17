@@ -41,12 +41,12 @@ namespace Codecool.CodecoolShop.Services
         public IEnumerable<Product> GetProductsForCategory(int categoryId)
         {
             var category = this._productCategoryDao.Get(categoryId);
-            var result = this._productDao.GetBy(category);
-            if (result == null)
+            if (category == null)
             {
                 throw new ArgumentException("There is not any Product by this Category ID!");
             }
 
+            var result = this._productDao.GetBy(category);
             return result;
         }
 
