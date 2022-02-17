@@ -5,6 +5,7 @@ using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 
 namespace Codecool.CodecoolShop.UnitTests
 {
@@ -66,10 +67,24 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            var category = new ProductCategory() { Id = 1, Name = "TestCategory" };
+            _categoryDao.Get(1).Returns(category);
+            IEnumerable<Product> productList = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "TestProduct1" },
+                new Product() { Id = 2, Name = "TestProduct2" }
+            };
+
+            _productDao.GetBy(category).Returns(productList);
+
             //Act
 
+            var result = _productService.GetProductsForCategory(1);
+
             //Assert
-            Assert.Pass();
+
+            Assert.AreEqual(productList, result);
+
         }
 
         [Test]
