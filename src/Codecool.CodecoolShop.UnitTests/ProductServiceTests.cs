@@ -237,10 +237,17 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            var product = new Product() { Id = 1, Name = "TestProduct1" };
+            _productDao.Get(1).Returns(product);
+
             //Act
 
+            var result = _productService.GetProductById(1);
+
             //Assert
-            Assert.Pass();
+
+            Assert.AreEqual(product, result);
+
         }
 
         [Test]
