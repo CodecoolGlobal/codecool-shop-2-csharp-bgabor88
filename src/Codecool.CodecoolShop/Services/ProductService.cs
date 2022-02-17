@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Codecool.CodecoolShop.Daos;
@@ -28,14 +29,27 @@ namespace Codecool.CodecoolShop.Services
 
         public ProductCategory GetProductCategory(int categoryId)
         {
-            return this._productCategoryDao.Get(categoryId);
+            var result = this._productCategoryDao.Get(categoryId);
+            if (result == null)
+            {
+                throw new ArgumentException("There is not any Product Category by this ID!");
+            }
+
+            return result;
         }
 
         public IEnumerable<Product> GetProductsForCategory(int categoryId)
         {
-            ProductCategory category = this._productCategoryDao.Get(categoryId);
-            return this._productDao.GetBy(category);
+            var category = this._productCategoryDao.Get(categoryId);
+            if (category == null)
+            {
+                throw new ArgumentException("There is not any Product by this Category ID!");
+            }
+
+            var result = this._productDao.GetBy(category);
+            return result;
         }
+
         public IEnumerable<Product> GetFilteredProducts(string supplierName, string categoryName)
         {
             ProductCategory category;
@@ -66,7 +80,13 @@ namespace Codecool.CodecoolShop.Services
 
         public Product GetProductById(int id)
         {
-            return this._productDao.Get(id);
+            var result = this._productDao.Get(id);
+            if (result == null)
+            {
+                throw new ArgumentException("There is not any Product by this ID!");
+            }
+
+            return result;
         }
     }
 }
