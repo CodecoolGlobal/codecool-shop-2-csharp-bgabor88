@@ -40,9 +40,16 @@ namespace Codecool.CodecoolShop.Services
 
         public IEnumerable<Product> GetProductsForCategory(int categoryId)
         {
-            ProductCategory category = this._productCategoryDao.Get(categoryId);
-            return this._productDao.GetBy(category);
+            var category = this._productCategoryDao.Get(categoryId);
+            var result = this._productDao.GetBy(category);
+            if (result == null)
+            {
+                throw new ArgumentException("There is not any Product by this Category ID!");
+            }
+
+            return result;
         }
+
         public IEnumerable<Product> GetFilteredProducts(string supplierName, string categoryName)
         {
             ProductCategory category;
