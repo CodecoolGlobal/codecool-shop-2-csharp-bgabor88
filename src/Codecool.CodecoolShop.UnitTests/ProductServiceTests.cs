@@ -255,10 +255,17 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            _productDao.Get(1).ReturnsNull();
+
             //Act
 
             //Assert
-            Assert.Pass();
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _productService.GetProductById(1);
+            });
+
         }
     }
 }
