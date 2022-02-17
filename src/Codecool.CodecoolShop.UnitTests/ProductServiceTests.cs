@@ -10,27 +10,37 @@ namespace Codecool.CodecoolShop.UnitTests
         }
 
         [Test]
-        public void GetProductCategory_()
+        public void GetProductCategory_ValidCategoryId_ReturnsProductCategory()
         {
             Assert.Pass();
         }
 
-        public void GetProductsForCategory_()
+        public void GetProductsForCategory_ValidCategoryId_ReturnsProductsForCategory()
         {
             Assert.Pass();
         }
 
-        public void GetFilteredProducts_()
+        public void GetFilteredProducts_ValidSupplierName_ReturnsProductsOfSupplier()
         {
             Assert.Pass();
         }
 
-        public void GetAll_()
+        public void GetFilteredProducts_ValidCategoryName_ReturnsProductsOfCategory()
         {
             Assert.Pass();
         }
 
-        public void GetProductById()
+        public void GetFilteredProducts_ValidSupplierAndCategoryName_ReturnsProductsFilteredBySupplierAndCategory()
+        {
+            Assert.Pass();
+        }
+
+        public void GetAll_ReturnsAllProducts()
+        {
+            Assert.Pass();
+        }
+
+        public void GetProductById_ValidId_ReturnsCorrectProduct()
         {
             Assert.Pass();
         }
