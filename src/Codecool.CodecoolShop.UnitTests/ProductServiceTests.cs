@@ -6,6 +6,7 @@ using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Codecool.CodecoolShop.UnitTests
 {
@@ -110,10 +111,27 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            IEnumerable<Product> productList = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "TestProduct1" },
+                new Product() { Id = 2, Name = "TestProduct2" }
+            };
+            IEnumerable<Supplier> supplierList = new List<Supplier>()
+            {
+                new Supplier { Id = 1, Name = "TestSupplier1" },
+                new Supplier { Id = 2, Name = "TestSupplier2" }
+            };
+            _supplierDao.GetAll().Returns(supplierList);
+            _productDao.GetBy(supplierList.FirstOrDefault()).Returns(productList);
+
             //Act
 
+            var result = _productService.GetFilteredProducts("TestSupplier1", "All");
+
             //Assert
-            Assert.Pass();
+            
+            Assert.AreEqual(productList, result);
+
         }
 
         [Test]
@@ -121,10 +139,23 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            IEnumerable<Product> productList = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "TestProduct1" },
+                new Product() { Id = 2, Name = "TestProduct2" }
+            };
+            var category = new ProductCategory() { Id = 1, Name = "TestCategory" };
+            _categoryDao.Get("TestCategory").Returns(category);
+            _productDao.GetBy(category).Returns(productList);
+
             //Act
 
+            var result = _productService.GetFilteredProducts("All", "TestCategory");
+
             //Assert
-            Assert.Pass();
+
+            Assert.AreEqual(productList, result);
+
         }
 
         [Test]
@@ -132,10 +163,30 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            IEnumerable<Product> productList = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "TestProduct1" },
+                new Product() { Id = 2, Name = "TestProduct2" }
+            };
+
+            var category = new ProductCategory() { Id = 1, Name = "TestCategory" };
+            _categoryDao.Get("TestCategory").Returns(category);
+
+            IEnumerable<Supplier> supplierList = new List<Supplier>()
+            {
+                new Supplier { Id = 1, Name = "TestSupplier1" },
+                new Supplier { Id = 2, Name = "TestSupplier2" }
+            };
+            _supplierDao.GetAll().Returns(supplierList);
+            _productDao.GetBy(category, supplierList.FirstOrDefault()).Returns(productList);
+
             //Act
 
+            var result = _productService.GetFilteredProducts("TestSupplier1", "TestCategory");
+
             //Assert
-            Assert.Pass();
+
+            Assert.AreEqual(productList, result);
         }
 
         [Test]
