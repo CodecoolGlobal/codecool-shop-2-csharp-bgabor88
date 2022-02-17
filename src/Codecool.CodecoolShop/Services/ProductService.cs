@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Codecool.CodecoolShop.Daos;
@@ -28,7 +29,13 @@ namespace Codecool.CodecoolShop.Services
 
         public ProductCategory GetProductCategory(int categoryId)
         {
-            return this._productCategoryDao.Get(categoryId);
+            var result = this._productCategoryDao.Get(categoryId);
+            if (result == null)
+            {
+                throw new ArgumentException("There is not any Product Category by this ID!");
+            }
+
+            return result;
         }
 
         public IEnumerable<Product> GetProductsForCategory(int categoryId)
