@@ -28,31 +28,37 @@ namespace Codecool.CodecoolShop.UnitTests
             Assert.Pass();
         }
 
+        [Test]
         public void GetProductsForCategory_ValidCategoryId_ReturnsProductsForCategory()
         {
             Assert.Pass();
         }
 
+        [Test]
         public void GetFilteredProducts_ValidSupplierName_ReturnsProductsOfSupplier()
         {
             Assert.Pass();
         }
 
+        [Test]
         public void GetFilteredProducts_ValidCategoryName_ReturnsProductsOfCategory()
         {
             Assert.Pass();
         }
 
+        [Test]
         public void GetFilteredProducts_ValidSupplierAndCategoryName_ReturnsProductsFilteredBySupplierAndCategory()
         {
             Assert.Pass();
         }
 
+        [Test]
         public void GetAll_ReturnsAllProducts()
         {
             Assert.Pass();
         }
 
+        [Test]
         public void GetProductById_ValidId_ReturnsCorrectProduct()
         {
             Assert.Pass();
