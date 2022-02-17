@@ -194,10 +194,22 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            IEnumerable<Product> productList = new List<Product>()
+            {
+                new Product() { Id = 1, Name = "TestProduct1" },
+                new Product() { Id = 2, Name = "TestProduct2" }
+            };
+
+            _productDao.GetAll().Returns(productList);
+
             //Act
 
+            var result = _productService.GetAll();
+
             //Assert
-            Assert.Pass();
+            
+            Assert.AreEqual(productList, result);
+
         }
 
         [Test]
