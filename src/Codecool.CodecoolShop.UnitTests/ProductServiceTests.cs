@@ -25,66 +25,121 @@ namespace Codecool.CodecoolShop.UnitTests
         [Test]
         public void GetProductCategory_ValidCategoryId_ReturnsProductCategory()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetProductCategory_InvalidCategoryId_ThrowsArgumentException()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetProductsForCategory_ValidCategoryId_ReturnsProductsForCategory()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetProductsForCategory_InvalidCategoryId_ThrowsArgumentException()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetFilteredProducts_ValidSupplierName_ReturnsProductsOfSupplier()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetFilteredProducts_ValidCategoryName_ReturnsProductsOfCategory()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetFilteredProducts_ValidSupplierAndCategoryName_ReturnsProductsFilteredBySupplierAndCategory()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetAll_ReturnsAllProducts()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetAll_ServerDown_ThrowsIoException()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetProductById_ValidId_ReturnsCorrectProduct()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
 
         [Test]
         public void GetProductById_InvalidId_ThrowsArgumentException()
         {
+            //Arrange
+
+            //Act
+
+            //Assert
             Assert.Pass();
         }
     }
