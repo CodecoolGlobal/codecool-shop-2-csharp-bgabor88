@@ -1,12 +1,25 @@
+using Codecool.CodecoolShop.Daos;
+using Codecool.CodecoolShop.Services;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Codecool.CodecoolShop.UnitTests
 {
+    [TestFixture]
     public class ProductServiceTests
     {
+        private IProductCategoryDao _categoryDao;
+        private ISupplierDao _supplierDao;
+        private IProductDao _productDao;
+        private ProductService _productService;
+
         [SetUp]
         public void Setup()
         {
+            _categoryDao = Substitute.For<IProductCategoryDao>();
+            _supplierDao = Substitute.For<ISupplierDao>();
+            _productDao = Substitute.For<IProductDao>();
+            _productService = new ProductService(_productDao, _categoryDao, _supplierDao);
         }
 
         [Test]
