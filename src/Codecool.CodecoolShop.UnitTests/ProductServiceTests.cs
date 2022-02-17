@@ -2,7 +2,9 @@ using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using NSubstitute;
+using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
+using System;
 
 namespace Codecool.CodecoolShop.UnitTests
 {
@@ -46,10 +48,17 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            _categoryDao.Get(1).ReturnsNull();
+
             //Act
 
             //Assert
-            Assert.Pass();
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                _productService.GetProductCategory(1);
+            });
+
         }
 
         [Test]
