@@ -80,7 +80,13 @@ namespace Codecool.CodecoolShop.Services
 
         public Product GetProductById(int id)
         {
-            return this._productDao.Get(id);
+            var result = this._productDao.Get(id);
+            if (result == null)
+            {
+                throw new ArgumentException("There is not any Product by this ID!");
+            }
+
+            return result;
         }
     }
 }
