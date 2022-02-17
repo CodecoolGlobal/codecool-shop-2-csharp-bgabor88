@@ -1,4 +1,5 @@
 using Codecool.CodecoolShop.Daos;
+using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using NSubstitute;
 using NUnit.Framework;
@@ -27,10 +28,17 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            var category = new ProductCategory() { Id = 1, Name = "TestCategory"};
+            _categoryDao.Get(1).Returns(category);
+
             //Act
 
+            var result = _productService.GetProductCategory(1);
+
             //Assert
-            Assert.Pass();
+
+            Assert.AreEqual(category, result);
+
         }
 
         [Test]
