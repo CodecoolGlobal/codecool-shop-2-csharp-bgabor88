@@ -2,10 +2,12 @@ using Codecool.CodecoolShop.Daos;
 using Codecool.CodecoolShop.Models;
 using Codecool.CodecoolShop.Services;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
 using NSubstitute.ReturnsExtensions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Codecool.CodecoolShop.UnitTests
@@ -217,10 +219,17 @@ namespace Codecool.CodecoolShop.UnitTests
         {
             //Arrange
 
+            _productDao.GetAll().Throws(new IOException());
+
             //Act
 
             //Assert
-            Assert.Pass();
+
+            Assert.Throws<IOException>(() =>
+            {
+                _productService.GetAll();
+            });
+
         }
 
         [Test]
