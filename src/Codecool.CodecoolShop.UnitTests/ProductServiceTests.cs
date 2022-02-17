@@ -29,7 +29,19 @@ namespace Codecool.CodecoolShop.UnitTests
         }
 
         [Test]
+        public void GetProductCategory_InvalidCategoryId_ThrowsArgumentException()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
         public void GetProductsForCategory_ValidCategoryId_ReturnsProductsForCategory()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void GetProductsForCategory_InvalidCategoryId_ThrowsArgumentException()
         {
             Assert.Pass();
         }
@@ -59,7 +71,19 @@ namespace Codecool.CodecoolShop.UnitTests
         }
 
         [Test]
+        public void GetAll_ServerDown_ThrowsIoException()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
         public void GetProductById_ValidId_ReturnsCorrectProduct()
+        {
+            Assert.Pass();
+        }
+
+        [Test]
+        public void GetProductById_InvalidId_ThrowsArgumentException()
         {
             Assert.Pass();
         }
