@@ -1,4 +1,4 @@
-# Hogwarts Potion
+# LensFans - A Codecool SHOP project
 
 ## Description
 
