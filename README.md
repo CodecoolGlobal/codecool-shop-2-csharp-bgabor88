@@ -30,5 +30,5 @@ You can choose from products and order them (not really :) )
 
 * Project idea provided by: <https://codecool.com>
 * Developers: 
-* - Richard Mogyoro: <https://www.linkedin.com/in/rich%C3%A1rd-mogyor%C3%B3-035447173/>
+* - Richard Mogyoro: <https://www.linkedin.com/in/richard-mogyoro/>
 * - Gabor Balazs: <https://www.linkedin.com/in/gabor-balazs88/>
